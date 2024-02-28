@@ -79,7 +79,7 @@ $(document).ready(function() {
 
   $(function() {
     typed.typed({
-      strings: ["Feliz", "Cumple", "Mari!"],
+      strings: ["Riesgo Girl", "Quilmeña arrepentida", "Mari!"],
       typeSpeed: 100,
       loop: true,
     });
