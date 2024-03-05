@@ -80,7 +80,7 @@ $(document).ready(function() {
   $(function() {
     typed.typed({
       strings: ["Riesgo Girl", "Quilmeña arrepentida", "Mari!"],
-      typeSpeed: 100,
+      typeSpeed: 300,
       loop: true,
     });
   });
