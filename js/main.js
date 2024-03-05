@@ -81,8 +81,8 @@ $(document).ready(function() {
     typed.typed({
       strings: ["Riesgo Girl", "Quilmeña arrepentida", "Mari!"],
       typeSpeed: 200,
-      backDelay: 500,
-      cursorChar: '_',
+      backDelay: 1000,
+      //cursorChar: '_',
       loop: true,
     });
   });
