@@ -80,7 +80,9 @@ $(document).ready(function() {
   $(function() {
     typed.typed({
       strings: ["Riesgo Girl", "Quilmeña arrepentida", "Mari!"],
-      typeSpeed: 300,
+      typeSpeed: 200,
+      backDelay: 500,
+      cursorChar: '_',
       loop: true,
     });
   });
