@@ -1,0 +1,87 @@
+/* General */
+body {
+  font-family: 'Comic Sans MS', sans-serif;
+  background-color: #f9f9f9;
+  margin: 0;
+  padding: 0;
+  color: #333;
+}
+
+h1 {
+  text-align: center;
+  color: #ff6f61;
+  font-size: 3em;
+  margin-top: 30px;
+}
+
+p {
+  text-align: center;
+  font-size: 1.2em;
+  color: #555;
+}
+
+header {
+  background-color: #ffebcd;
+  padding: 20px 0;
+}
+
+footer {
+  background-color: #ff6f61;
+  color: white;
+  text-align: center;
+  padding: 10px;
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+}
+
+/* Estilos del formulario */
+.container {
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 20px;
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+  margin-top: 30px;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+input, button {
+  padding: 10px;
+  font-size: 1em;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+}
+
+button {
+  background-color: #ff6f61;
+  color: white;
+  cursor: pointer;
+  border: none;
+}
+
+button:hover {
+  background-color: #e55b50;
+}
+
+.hidden {
+  display: none;
+}
+
+#confirmation {
+  text-align: center;
+  font-size: 1.5em;
+  color: #32cd32;
+}
+
+/* Efectos visuales */
+input:focus, button:focus {
+  outline: none;
+  box-shadow: 0px 0px 5px rgba(0, 123, 255, 0.5);
+}
