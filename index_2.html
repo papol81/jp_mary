@@ -114,9 +114,9 @@
             let daysToAdd;
 
             if (day <= 2) {
-                daysToAdd = 1 - day; // Martes más cercano
+                daysToAdd = 2 - day; // Martes más cercano
             } else if (day <= 4) {
-                daysToAdd = 3 - day; // Jueves más cercano
+                daysToAdd = 4 - day; // Jueves más cercano
             } else {
                 daysToAdd = (day === 5 || day === 6) ? 8 - day : 2; // Próximo martes
             }
