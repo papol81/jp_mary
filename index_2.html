@@ -52,16 +52,12 @@
                 <input type="text" class="form-control" id="name" placeholder="Tu nombre" required>
             </div>
             <div class="mb-3">
-                <label for="email" class="form-label">Correo Electrónico</label>
-                <input type="email" class="form-control" id="email" placeholder="Tu correo electrónico" required>
-            </div>
-            <div class="mb-3">
                 <label for="date" class="form-label">Fecha</label>
-                <input type="date" class="form-control" id="date" required>
+                <input type="date" class="form-control" id="date" required readonly>
             </div>
             <div class="mb-3">
                 <label for="time" class="form-label">Hora</label>
-                <input type="time" class="form-control" id="time" required>
+                <input type="time" class="form-control" id="time" value="19:30" readonly>
             </div>
             <div class="mb-3">
                 <label for="duration" class="form-label">Duración</label>
@@ -87,6 +83,30 @@
     <!-- Bootstrap JS -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     <script>
+        // Configura automáticamente la fecha al próximo martes o jueves
+        function getNextTuesdayOrThursday() {
+            const today = new Date();
+            const day = today.getDay(); // 0 = Domingo, 1 = Lunes, ..., 6 = Sábado
+            let daysToAdd;
+
+            if (day === 2 || day === 4) {
+                daysToAdd = 7; // Si hoy es martes o jueves, selecciona el siguiente
+            } else if (day < 2) {
+                daysToAdd = 2 - day; // Ir al próximo martes
+            } else if (day < 4) {
+                daysToAdd = 4 - day; // Ir al próximo jueves
+            } else {
+                daysToAdd = 9 - day; // Saltar al martes siguiente
+            }
+
+            const nextDate = new Date();
+            nextDate.setDate(today.getDate() + daysToAdd);
+            return nextDate.toISOString().split('T')[0]; // Formato YYYY-MM-DD
+        }
+
+        // Establecer la fecha predeterminada
+        document.getElementById('date').value = getNextTuesdayOrThursday();
+
         // Capturamos el formulario y evitamos su envío predeterminado
         document.getElementById('reservation-form').addEventListener('submit', function(event) {
             event.preventDefault();
