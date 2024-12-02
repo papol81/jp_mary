@@ -72,7 +72,7 @@
 
         <div class="mt-4">
             <button id="rafting-btn" class="btn btn-secondary w-100 mb-2">Turno para Rafting</button>
-            <button id="error-btn" class="btn btn-danger w-100">Reserva para Miércoles / Jueves</button>
+            <button id="error-btn" class="btn btn-danger w-100">Reserva para Miércoles / Viernes</button>
         </div>
 
         <div class="alert alert-info mt-4" role="alert">
@@ -124,16 +124,22 @@
             "Meli, bajá el volumen de tu música", 
             "Espere por favor, a la Gi le duele el hombro"
         ];
+        
+        // Función para obtener un mensaje aleatorio sin repetir
+        function getUniqueRandomMessages(messages, count) {
+            const shuffled = [...messages].sort(() => 0.5 - Math.random());
+            return shuffled.slice(0, count);
+        }
 
         // Capturamos el formulario y evitamos su envío predeterminado
         document.getElementById('reservation-form').addEventListener('submit', function(event) {
             event.preventDefault();
 
-            // Mostrar dos mensajes aleatorios
-            for (let i = 0; i < 2; i++) {
-                const randomIndex = Math.floor(Math.random() * randomMessages.length);
-                alert(randomMessages[randomIndex]);
-            }
+            // Obtener dos mensajes únicos aleatorios
+            const uniqueMessages = getUniqueRandomMessages(randomMessages, 2);
+
+            // Mostrar los mensajes en orden
+            uniqueMessages.forEach(message => alert(message));
 
             // Mostrar el mensaje final
             alert("Reserva finalmente realizada");
@@ -147,8 +153,8 @@
 
         // Botón "Reserva para Miércoles / Jueves"
         document.getElementById('error-btn').addEventListener('click', function() {
-            alert("¡Oh no! Algo salió mal...");
-            window.open("https://es.wikipedia.org/wiki/Pantalla_azul_de_la_muerte#/media/Archivo:Bsodwindows10.png", "_self");
+            alert("Esto se va a poner feo...");
+            window.open("https://upload.wikimedia.org/wikipedia/commons/5/56/Bsodwindows10.png", "_self");
         });
     </script>
 </body>
