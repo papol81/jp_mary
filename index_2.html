@@ -153,15 +153,9 @@
 
         // Botón "Reserva para Miércoles / Jueves"
         document.getElementById('error-btn').addEventListener('click', function() {
-            const newWindow = window.open("", "_blank", "width=600,height=1167");
-            newWindow.document.write(`
-                <iframe src="https://assets.pinterest.com/ext/embed.html?id=8162843069258396" 
-                        height="1167" 
-                        width="600" 
-                        frameborder="0" 
-                        scrolling="no">
-                </iframe>
-            `);
+
+            alert("¡Aquí tienes tu turno para rafting!");
+            window.open("https://i.pinimg.com/736x/5d/33/a1/5d33a10d3d20c73125e66a1f3cb4a974.jpg", "_self");
         });
     </script>
 </body>
