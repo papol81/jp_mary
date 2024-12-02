@@ -105,23 +105,33 @@
         // Establecer la fecha predeterminada
         document.getElementById('date').value = getNextTuesdayOrThursday();
 
-        // Contador de alertas
-        let contador = 0;
+        // Lista de mensajes aleatorios
+        const randomMessages = [
+            "Momento, Susi está haciendo 112 reservas",
+            "Aguarde, Beto se está cambiando la peluca",
+            "Espere, Flor está charlando",
+            "ALBERTOOOO",
+            "Juntamoooos",
+            "No desespere, Facu está preparando brownie",
+            "Mejor tenis, el rafting es una cagada", 
+            "No siempre guascazo es lo que uno cree", 
+            "Posho y poio son lo mismo", 
+            "Los cuernnitos son mejores que las tortitas", 
+            "Meli, bajá el volumen de tu música"
+        ];
 
         // Capturamos el formulario y evitamos su envío predeterminado
         document.getElementById('reservation-form').addEventListener('submit', function(event) {
             event.preventDefault();
 
-            // Mostrar las alertas según el contador
-            if (contador === 0) {
-                alert("Momento, Susi está haciendo 122 reservas");
-            } else if (contador === 1) {
-                alert("Momento, Susi aún no terminó");
-            } else {
-                alert("¡Reserva realizada con éxito!");
-                contador = -1; // Reiniciar el ciclo de alertas
+            // Mostrar dos mensajes aleatorios
+            for (let i = 0; i < 2; i++) {
+                const randomIndex = Math.floor(Math.random() * randomMessages.length);
+                alert(randomMessages[randomIndex]);
             }
-            contador++;
+
+            // Mostrar el mensaje final
+            alert("Reserva finalmente realizada");
         });
     </script>
 </body>
