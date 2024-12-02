@@ -107,19 +107,24 @@
         // Establecer la fecha predeterminada
         document.getElementById('date').value = getNextTuesdayOrThursday();
 
+        contador = 0
+
         // Capturamos el formulario y evitamos su envío predeterminado
         document.getElementById('reservation-form').addEventListener('submit', function(event) {
             event.preventDefault();
 
             // Primera alerta
-            alert("Momento, Susi está haciendo 122 reservas");
-            
-            // Segunda alerta, después de un pequeño retraso
-            setTimeout(() => {
+            if contador == 0 {
+                alert("Momento, Susi está haciendo 122 reservas");
+                contador = contador + 1;
+            } else if (contador == 1) {
+                contador = contador + 1;
                 alert("Momento, Susi aún no terminó");
-                // Aquí podrías enviar los datos del formulario o mostrar un mensaje de éxito
+            } else {
                 alert("¡Reserva realizada con éxito!");
-            }, 1000); // 1000ms = 1 segundo
+            }
+            
+            
         });
     </script>
 </body>
