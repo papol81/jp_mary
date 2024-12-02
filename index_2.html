@@ -71,7 +71,7 @@
         </form>
 
         <div class="mt-4">
-            <button id="rafting-btn" class="btn btn-secondary w-100 mb-2">Turno para Rafting</button>
+            <button id="rafting-btn" class="btn btn-secondary w-100 mb-2" data-bs-toggle="modal" data-bs-target="#raftingModal">Turno para Rafting</button>
             <button id="error-btn" class="btn btn-danger w-100">Reserva para Miércoles / Viernes</button>
         </div>
 
@@ -79,6 +79,24 @@
             🎉 ¡Reserva con nosotros y gana un descuento para tu próxima peluca de dudosa dignidad! 🎉
         </div>
     </main>
+
+    <!-- Modal para Rafting -->
+    <div class="modal fade" id="raftingModal" tabindex="-1" aria-labelledby="raftingModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="raftingModalLabel">Turno para Rafting</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <video controls width="100%">
+                        <source src="1202.mov" type="video/mp4">
+                        Tu navegador no soporta el formato de video.
+                    </video>
+                </div>
+            </div>
+        </div>
+    </div>
 
     <footer>
         © 2024 Reserva Tenis. Diseñado para los amantes del asado y los mates lavados. Deporte? Qué es eso?. 🎾
