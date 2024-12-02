@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reservas</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #f8f9fa;
+        }
+        #reserve-btn {
+            position: absolute;
+            transition: transform 0.3s ease, left 0.3s ease, top 0.3s ease;
+        }
+        #message {
+            position: absolute;
+            font-size: 1.5rem;
+            color: #28a745;
+            font-weight: bold;
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="position-relative">
+        <button id="reserve-btn" class="btn btn-primary">RESERVAR</button>
+        <div id="message">Oleeeee!</div>
+    </div>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        const button = document.getElementById('reserve-btn');
+        const message = document.getElementById('message');
+        const container = document.body;
+
+        button.addEventListener('mouseenter', () => {
+            // Mueve el botón a una posición aleatoria dentro de la ventana
+            const maxX = container.clientWidth - button.offsetWidth;
+            const maxY = container.clientHeight - button.offsetHeight;
+
+            const randomX = Math.floor(-1 * Math.random() * maxX / 2);
+            const randomY = Math.floor(Math.random() * maxY / 2);
+
+            button.style.left = randomX + 'px';
+            button.style.top = randomY + 'px';
+
+            // Muestra el mensaje "Oleeeee!"
+            message.style.left = randomX + button.offsetWidth + 10 + 'px';
+            message.style.top = randomY + 'px';
+            message.style.display = 'block';
+        });
+
+        button.addEventListener('mouseleave', () => {
+            // Oculta el mensaje cuando el cursor deja el botón
+            message.style.display = 'none';
+        });
+    </script>
+</body>
+</html>
