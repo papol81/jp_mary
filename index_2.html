@@ -51,6 +51,12 @@
         const date = document.getElementById('date').value;
         const time = document.getElementById('time').value;
 
+        // Validar campos
+        if (!name || !date || !time) {
+            alert("Por favor completa todos los campos.");
+            return;
+        }
+
         // Obtener dos mensajes únicos aleatorios
         const uniqueMessages = getUniqueRandomMessages(randomMessages, 2);
 
@@ -66,9 +72,8 @@ Frases del día:
 2. ${uniqueMessages[1]}
         `.trim();
 
-        // URL de WhatsApp
-        const groupLink = "https://chat.whatsapp.com/DOw5bc8xHYH9dbiPFTuksP";
-        const whatsappURL = `https://api.whatsapp.com/send?text=${encodeURIComponent(whatsappMessage)}&link=${groupLink}`;
+        // URL de WhatsApp (para mensaje predefinido)
+        const whatsappURL = `https://api.whatsapp.com/send?text=${encodeURIComponent(whatsappMessage)}`;
 
         // Mostrar los mensajes de confirmación
         uniqueMessages.forEach(message => alert(message));
