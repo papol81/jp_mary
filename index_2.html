@@ -93,6 +93,21 @@
     </footer>
 
     <script>
+        const raftingModal = document.getElementById('raftingModal');
+        const raftingVideo = document.getElementById('raftingVideo');
+
+        // Reproducir automáticamente el video al abrir el modal
+        raftingModal.addEventListener('show.bs.modal', () => {
+            raftingVideo.currentTime = 0; // Reiniciar el video
+            raftingVideo.play(); // Reproducir el video
+        });
+
+        // Pausar el video al cerrar el modal
+        raftingModal.addEventListener('hide.bs.modal', () => {
+            raftingVideo.pause();
+        });
+
+        
         // Función para configurar la fecha automáticamente
         function getNextTuesdayOrThursday() {
             const today = new Date();
@@ -150,21 +165,6 @@
             alert("Reserva finalmente realizada");
 
             window.open(whatsappURL, '_blank');
-        });
-
-
-    const raftingModal = document.getElementById('raftingModal');
-        const raftingVideo = document.getElementById('raftingVideo');
-
-        // Reproducir automáticamente el video al abrir el modal
-        raftingModal.addEventListener('show.bs.modal', () => {
-            raftingVideo.currentTime = 0; // Reiniciar el video
-            raftingVideo.play(); // Reproducir el video
-        });
-
-        // Pausar el video al cerrar el modal
-        raftingModal.addEventListener('hide.bs.modal', () => {
-            raftingVideo.pause();
         });
 
     </script>
