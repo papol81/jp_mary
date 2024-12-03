@@ -1,85 +1,126 @@
-<script>
-    // Configura automáticamente la fecha al próximo martes o jueves
-    function getNextTuesdayOrThursday() {
-        const today = new Date();
-        const day = today.getDay(); // 0 = Domingo, 1 = Lunes, ..., 6 = Sábado
-        let daysToAdd;
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TenisApp</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            background-color: #f8f9fa;
+        }
+        .header {
+            background: linear-gradient(45deg, #00aaff, #00ff88);
+            color: white;
+            text-align: center;
+            padding: 2rem 1rem;
+        }
+        .header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+        }
+        .btn-primary {
+            background-color: #00aaff;
+            border: none;
+        }
+        .btn-primary:hover {
+            background-color: #0077cc;
+        }
+        footer {
+            text-align: center;
+            padding: 1rem 0;
+            background-color: #343a40;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <h1>🎾 La nueva TenistAPP 🎾</h1>
+        <p>¡Diviértete como un principiante, porque bueno no serás jamás!</p>
+    </header>
 
-        if (day <= 2) {
-            daysToAdd = 2 - day; // Martes más cercano
-        } else if (day <= 4) {
-            daysToAdd = 4 - day; // Jueves más cercano
-        } else {
-            daysToAdd = (day === 5 || day === 6) ? 8 - day : 2; // Próximo martes
+    <main class="container mt-4">
+        <form id="reservation-form">
+            <div class="mb-3">
+                <label for="name" class="form-label">Nombre</label>
+                <input type="text" class="form-control" id="name" placeholder="Tu nombre" required>
+            </div>
+            <div class="mb-3">
+                <label for="date" class="form-label">Fecha</label>
+                <input type="date" class="form-control" id="date" required readonly>
+            </div>
+            <div class="mb-3">
+                <label for="time" class="form-label">Hora</label>
+                <input type="time" class="form-control" id="time" value="19:30" readonly>
+            </div>
+            <button type="submit" class="btn btn-primary w-100">¡Reservar Ahora!</button>
+        </form>
+    </main>
+
+    <footer>
+        © 2024 Reserva Tenis. Diseñado para los amantes del asado y los mates lavados.
+    </footer>
+
+    <script>
+        // Función para configurar la fecha automáticamente
+        function getNextTuesdayOrThursday() {
+            const today = new Date();
+            const day = today.getDay();
+            let daysToAdd = day <= 2 ? 2 - day : (day <= 4 ? 4 - day : 8 - day);
+            const nextDate = new Date();
+            nextDate.setDate(today.getDate() + daysToAdd);
+            return nextDate.toISOString().split('T')[0];
         }
 
-        const nextDate = new Date();
-        nextDate.setDate(today.getDate() + daysToAdd);
-        return nextDate.toISOString().split('T')[0]; // Formato YYYY-MM-DD
-    }
+        document.getElementById('date').value = getNextTuesdayOrThursday();
 
-    // Establecer la fecha predeterminada
-    document.getElementById('date').value = getNextTuesdayOrThursday();
+        const randomMessages = [
+            "Momento, Susi está haciendo 112 reservas",
+            "Aguarde, Beto se está cambiando la peluca",
+            "Espere, Flor está charlando",
+            "ALBERTOOOO",
+            "No desespere, Facu está preparando brownie",
+            "Reflexiones: No siempre guascazo es lo que uno cree",
+        ];
 
-    // Lista de mensajes aleatorios
-    const randomMessages = [
-        "Momento, Susi está haciendo 112 reservas",
-        "Aguarde, Beto se está cambiando la peluca",
-        "Espere, Flor está charlando",
-        "ALBERTOOOO",
-        "No desespere, Facu está preparando brownie",
-        "Para pensar: Mejor jugar al tenis, el rafting es una cagada", 
-        "Reflexiones: No siempre guascazo es lo que uno cree", 
-        "Cuyo News: Posho y poio son lo mismo", 
-        "De BsAs con amor: Los cuernitos son mejores que las tortitas", 
-        "Meli, bajá el volumen de tu música", 
-        "Espere por favor, a la Gi le duele el hombro"
-    ];
-
-    // Función para obtener un mensaje aleatorio sin repetir
-    function getUniqueRandomMessages(messages, count) {
-        const shuffled = [...messages].sort(() => 0.5 - Math.random());
-        return shuffled.slice(0, count);
-    }
-
-    // Capturamos el formulario y evitamos su envío predeterminado
-    document.getElementById('reservation-form').addEventListener('submit', function(event) {
-        event.preventDefault();
-
-        // Obtener valores del formulario
-        const name = document.getElementById('name').value;
-        const date = document.getElementById('date').value;
-        const time = document.getElementById('time').value;
-
-        // Validar campos
-        if (!name || !date || !time) {
-            alert("Por favor completa todos los campos.");
-            return;
+        function getUniqueRandomMessages(messages, count) {
+            const shuffled = [...messages].sort(() => 0.5 - Math.random());
+            return shuffled.slice(0, count);
         }
 
-        // Obtener dos mensajes únicos aleatorios
-        const uniqueMessages = getUniqueRandomMessages(randomMessages, 2);
+        document.getElementById('reservation-form').addEventListener('submit', function (event) {
+            event.preventDefault();
 
-        // Construir el mensaje de WhatsApp
-        const whatsappMessage = `
-Reserva confirmada:
-- Nombre: ${name}
-- Fecha: ${date}
-- Hora: ${time}
+            const name = document.getElementById('name').value;
+            const date = document.getElementById('date').value;
+            const time = document.getElementById('time').value;
 
-Frases del día:
-1. ${uniqueMessages[0]}
-2. ${uniqueMessages[1]}
-        `.trim();
+            if (!name || !date || !time) {
+                alert("Por favor completa todos los campos.");
+                return;
+            }
 
-        // URL de WhatsApp (para mensaje predefinido)
-        const whatsappURL = `https://api.whatsapp.com/send?text=${encodeURIComponent(whatsappMessage)}`;
+            const uniqueMessages = getUniqueRandomMessages(randomMessages, 2);
 
-        // Mostrar los mensajes de confirmación
-        uniqueMessages.forEach(message => alert(message));
-        alert("Reserva finalmente realizada");
+            const whatsappMessage = `
+            Reserva confirmada:
+            - Nombre: ${name}
+            - Fecha: ${date}
+            - Hora: ${time}
+            
+            Frases del día:
+            1. ${uniqueMessages[0]}
+            2. ${uniqueMessages[1]}
+            `.trim();
 
-        // Abrir el enlace de WhatsApp
-        window.open(whatsappURL, '_blank');
-    });
-</script>
+            const whatsappURL = `https://api.whatsapp.com/send?text=${encodeURIComponent(whatsappMessage)}`;
+            
+            uniqueMessages.forEach(msg => alert(msg));
+            alert("Reserva finalmente realizada");
+
+            window.open(whatsappURL, '_blank');
+        });
+    </script>
+</body>
+</html>
